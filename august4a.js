@@ -42,3 +42,5 @@ var isPowerOfFour = function (num) {
 };
 
 console.log(isPowerOfFour(1))
+
+
