@@ -20,6 +20,7 @@ t3.right = t6
  */
 
 var verticalTraversal = function (root) {
+    //the following is if they give us a single node
     var coords = []
     var coo = function (node, nodex) { //nodey
         coords = coords.concat([[node.val, nodex]])
@@ -27,9 +28,37 @@ var verticalTraversal = function (root) {
         if (node.left !== null) coo(node.left, nodex - 1) //nodey - 1
     }
     coo(root, 0, 0)
-
     coords = coords.sort((a, b) => a[1] - b[1])
     console.log(coords)
+
+
+    //the following is if they give us an array of the whole binary tree
+    
+        // y = root.map((v, i, a) => {
+        //     return [v, 0 - Math.floor(Math.log2(i + 1))]
+    
+        // })
+    
+        // seen = {}
+        // repeat = 1
+        // for ([i, v] of y.entries()) {
+        //     if (v[1] == 0) continue
+        //     if (seen.hasOwnProperty(v[1])) {
+        //         y[i][1] = y[i - 1][1] + 1 + repeat
+        //         repeat *= -1
+        //     }
+        //     else {
+        //         repeat = 1
+        //     }
+        //     seen[v[1]] = 1
+    
+        //     // console.log(i)
+        // }
+        // coords = y.filter((v) => v[0] !== null).sort((a, b) => a[1] - b[1])
+    
+//////////////////////////////////////////////////////////////////    
+
+
     distinctx = coords.map((v, i, a) => v[1]).filter((v, i, a) => {
         return !i || v !== a[i - 1]
     })
@@ -39,34 +68,12 @@ var verticalTraversal = function (root) {
             return vm == v[1]
         }).map((x) => x[0])
     })
+    return answer
 };
 
 
-// verticalTraversal(t1)
 
-var getCoords = function (root) {
-
-    x = root.map((v, i, a) => {
-        return bucket = Math.pow(2, i + 1) - 1
-
-
-    })
-    console.log(x)
-
-    y = root.map((v, i, a) => {
-        // place = Math.pow(i Math.pow(2, i + 1) - 1
-        return [v, 0 - Math.floor(Math.log2(i + 1))]
-
-    })
-    console.log(y) // this is the value and the y coordinate
-
-// strangely enough, the x coordinates are just for each distinct y coordinate,
-// increment by 2. start with the smallest one and go up by 2.
-    // seen = {}
-    // for (v in y) {
-    //     if (seen.hasOwnProperty(v[1])
-    // }
-
-}
 bt = [3, 9, 20, null, null, 15, 7]
-getCoords(bt)
+verticalTraversal(bt)
+
+
