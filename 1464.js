@@ -4,6 +4,10 @@
  */
 //38% 5%
 //there are various ways we could avoid the slice function there
+//a faster algorithm would loop by 2's:
+//evaluate if i > nums[k] and replace it if it isn't
+//evaluate if j > nums[k+1] and repalce it if it isn't
+
 var maxProduct = function (nums) {
     var i = (nums[0] < nums[1]) ? 0 : 1
     var j = (i == 0) ? 1 : 0 
