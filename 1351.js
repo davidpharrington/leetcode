@@ -2,6 +2,8 @@
  * @param {number[][]} grid
  * @return {number}
  */
+
+//speed 31 memory 40
 var countNegatives = function (grid) {
     count = 0
     positiveColumn = 0
