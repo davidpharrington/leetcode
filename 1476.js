@@ -1,8 +1,12 @@
+// Runtime: 108 ms, faster than 70.23 % of JavaScript online submissions for Subrectangle Queries.
+// Memory Usage: 44.5 MB, less than 88.17 % of JavaScript online submissions for Subrectangle Queries.
+
+
 /**
  * @param {number[][]} rectangle
  */
-var SubrectangleQueries = function(rectangle) {
-    
+var SubrectangleQueries = function (rectangle) {
+  this.rectangle = rectangle;
 };
 
 /** 
@@ -13,8 +17,13 @@ var SubrectangleQueries = function(rectangle) {
  * @param {number} newValue
  * @return {void}
  */
-SubrectangleQueries.prototype.updateSubrectangle = function(row1, col1, row2, col2, newValue) {
-    
+SubrectangleQueries.prototype.updateSubrectangle = function (row1, col1, row2, col2, newValue) {
+  for (row = row1; row <= row2; row++) {
+    for (col = col1; col <= col2; col++) {
+      this.rectangle[row][col] = newValue;
+    }
+  }
+
 };
 
 /** 
@@ -22,15 +31,13 @@ SubrectangleQueries.prototype.updateSubrectangle = function(row1, col1, row2, co
  * @param {number} col
  * @return {number}
  */
-SubrectangleQueries.prototype.getValue = function(row, col) {
-    
+SubrectangleQueries.prototype.getValue = function (row, col) {
+  return this.rectangle[row][col]
 };
 
-/** 
+/**
  * Your SubrectangleQueries object will be instantiated and called as such:
  * var obj = new SubrectangleQueries(rectangle)
  * obj.updateSubrectangle(row1,col1,row2,col2,newValue)
  * var param_2 = obj.getValue(row,col)
  */
-
- 
