@@ -1,131 +1,88 @@
-cl = function(...args) {console.log(...args)}
-class Node {
-    constructor () {
-        this.element = element;
-        this.next = null;
-    }
-}
+// Runtime: 212 ms, faster than 8.83% of JavaScript online submissions for Add Two Numbers.
+// Memory Usage: 45.6 MB, less than 16.87% of JavaScript online submissions for Add Two Numbers.
 
 
-class LinkedList {
-    constructor () {
-        this.head = null;
-        this.size = 0;
-    }
-    add(element) {
-        var node = new Node(element);
-        var current;
-    
-        if (this.head) {
-            current = this.head;
-            while (current.next) {
-                current = current.next;
-            }
-            current.next = node;
-        } else {
-            this.head = node;
-        }
-        this.size++;
-    }
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val, next) {
+ *     this.val = (val===undefined ? 0 : val)
+ *     this.next = (next===undefined ? null : next)
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
 
-    insertAt(element, index)
-    {
-        if (index > this.size)
-            return false;
-        else {
-            var node = new Node(element);
-            var curr, prev;
-
-            curr = this.head;
-            
-            if (index==0) {
-                node.next = head;
-                this.head = node;
-            } else {
-                curr = this.head;
-                
-                var it = 0;
-                while (it < index) {
-                    it++;
-                    prev = curr;
-                    curr = curr.next;
+let l1 = {
+    val: 9, next: {
+        val: 9, next: {
+            val: 9, next: {
+                val: 9, next: {
+                    val: 9, next: {
+                        val: 9, next: {
+                            val: 9, next: null
+                        }
+                    }
                 }
-
             }
-
         }
     }
+};
 
-}
-
-
-
-
-
-
-class Node {
-    constructor() {
-        this.element = element;
-        this.next = null;
-    }
-}
-
-class LinkedList {
-    // constructor
-    constructor() {
-        this.head = null;
-        this.size = 0;
-    }
-
-    add(element)
-    var(node) = new Node(element);
-
-    var current;
-
-    if(this.head==null) 
-        this.head=node;
-    else {
-        current=this.head;
-        while(current.next) {
-            current=current.next;
+let l2 = {
+    val: 9, next: {
+        val: 9, next: {
+            val: 9, next: {
+                val: 9, next: null,
+            }
         }
-        current.next = node;
     }
-    this.size++;
-
-    //need to implement
-    //add(element)
-    //insertAt(element,location)
-    //removeFrom(location)
-    //removeElement(element)
-
-    //helper methods
-    //isEmpty
-    //sizeOfList
-    //printList
-
-}
+};
 
 
+var addTwoNumbers = function (l1, l2) {
+    let resultAnchor = {};
+    let resultNode = null;
+    let carry = 0;
+    let newVal = null;
 
 
+    while (l1 && "val" in l1 || l2 && "val" in l2) {
+        const add = ((l1 && "val" in l1) ? l1.val : 0) + ((l2 && "val" in l2) ? l2.val : 0) + carry;
 
+        carry = 0;
+        if (add > 9) {
+            newVal = add - 10;
+            carry = 1;
+        } else {
+            newVal = add;
+        }
 
+        if (!resultNode) {
+            resultNode = { val: newVal, next: (l1 && l1.next || l2 && l2.next) ? {} : null };
+            resultAnchor = resultNode;
+        } else {
+            resultNode.next = { val: newVal, next: (l1 && l1.next || l2 && l2.next) ? {} : null };
+            resultNode = resultNode.next;
+        };
+        l1 = (l1 && l1.next) ? l1.next : null;
+        l2 = (l2 && l2.next) ? l2.next : null;
 
+    };
+    
+    if (carry) {
+        console.log("carry");
+        resultNode.next = { val: 1, next: null };
+    };
+    
+    // console.log("resultAnchor");
+    // console.dir(resultAnchor, { depth: null });
+    return resultAnchor;
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+addTwoNumbers(l1, l2);
 
 
 
